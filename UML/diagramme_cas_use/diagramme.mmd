@@ -1,0 +1,25 @@
+usecase-beta
+    direction LR
+    actor Admin("Admin")
+    actor Auteur("Journaliste")
+    actor Visiteur("Visiteur")
+    systemBoundary ""
+    A1("Gérer les articles")
+    A2("Gérer les sections")
+    A3("Gérer les journalistes")
+    A4("Consulter les articles")
+    A5("Ajouter un article")
+    A6("Modifier un article")
+    A7("Supprimer un article")
+    A8("Consulter les sections")
+    A9("Consulter les articles")
+    end
+    Admin --> A1
+    Admin --> A2
+    Admin --> A3
+    Auteur --> A4
+    Auteur --> A5
+    Auteur --> A6
+    Auteur --> A7
+    Visiteur --> A8
+    Visiteur --> A9

@@ -1,0 +1,70 @@
+classDiagram
+    direction LR
+    class Journalist{
+        -int id_journalist
+        -varchar email_journalist
+        -varchar nom_journalist
+        -varchar prenom_journalist
+        -text photo_journalist
+        -varchar mot_de_passe
+        setId_journalist(): void
+        getId_journalist(): int
+        setEmail_journalist(): void
+        getEmail_journalist(): string
+        setNom_journalist(): void
+        getNom_journalist(): string
+        setPrenom_journalist(): void
+        getPrenom_journalist(): string
+        setPhoto_journalist(): void
+        getPhoto_journalist(): string
+        setMot_de_passe(): void
+        getMot_de_passe(): string
+    }
+    class Article{
+        int id_article
+        varchar titre_article
+        text contenu_article
+        varchar description_article
+        date date_publication
+        date date_creation
+        time duree_lecture
+        text image_article
+        enum status
+        setId_article(): void
+        getId_article(): int
+        setTitre_article(): void
+        getTitre_article(): string
+        setcontenu_article(): void
+        getcontenu_article(): string
+        setdescription_article(): void
+        getdescription_article(): string
+        setdate_publication(): void
+        getdate_publication(): int
+        setdate_creation(): void
+        getdate_creation(): int
+        setduree_lecture(): void
+        getduree_lecture(): int
+        setimage_article(): void
+        getimage_article(): string
+        setstatus(): void
+        getstatus(): string
+    }
+    class Section{
+        -int id_section
+        -varchar nom_section
+        -text couleur_section
+        -text icon_section
+        -text description_section
+        setId_section(): void
+        getId_section(): int
+        setNom_section(): void
+        getNom_section(): string
+        setCouleur_section(): void
+        getCouleur_section(): string
+        setIcon_section(): void
+        getIcon_section(): string
+        setdescription_section(): void
+        getdescription_section(): string
+    }
+    Journalist -- Article : rédige
+    Article -- Section : appartient
