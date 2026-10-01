@@ -6,44 +6,33 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header class="flex bg-white border-b border-gray-200 justify-between px-6 py-4">
-        <h1 class="text-lg font-semibold text-800">Gestion des catégories</h1>
-        <span class="text-sm text-gray-500">Admin</span>
-    </header>
-    <main class="flex-1 flex flex-col">
-        <div class="px-6 py-6">
-            <button id="show" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Ajouter une Section</button>
+<body class="m-4">
+    <button id="show" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">ajouter une section</button>
+    <form id="form" hidden>
+        <div class="px-6 py-6 max-w-md mx-6">
+            <label for="">Nom</label>
+            <input type="text" name="" id="nom" class="m-2 border border-gray-300 rounded-lg w-full p-2">
+            <label for="">Description</label>
+            <input type="text" name="" id="description" class="m-2 border border-gray-300 rounded-lg w-full p-2">
+            <label for="">Couleur</label>
+            <input type="color" id="color" class="m-2 border border-gray-300 rounded-lg w-full p-2">
+            <label for="">Icone</label>
+            <input type="text" id="icone" class="m-2 border border-gray-300 rounded-lg w-full p-2">
+            <button type="submit" id="ajouter" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">ajouter</button>
+            <button type="button" id="annuler" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">annuler</button>
         </div>
-        <form id="form" hidden>
-            <div class="px-6 py-6 max-w-md mx-6">
-                <label for="nom">Nom de Section</label>
-                <input type="text" name="nom" id="nom" class="m-2 border border-gray-300 rounded-lg w-full p-2">
-                <label for="couleur">Couleur de Section</label>
-                <input type="color" name="couleur" id="couleur" value="#000000" class="m-2 border border-gray-300 rounded-lg w-full p-2">
-                <label for="icon">Icone de Section</label>
-                <input type="text" name="icon" id="icon" class=" m-2 border border-gray-300 rounded-lg w-full p-2">
-                <label for="description">Description</label>
-                <textarea name="description" cols="30" rows="10" id="description" class="m-2 border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                <button id="ajouter" type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 m-2">Ajouter</button>
-                <button id="annuler" type="button" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 m-2">Annuler</button>
-            </div>
-            </form>
-            <table border="1" class="border border-gray-300 m-6">
-            <thead class="bg-gray-100">
-                <tr class="bg-gray-100">
-                    <th class="border border-gray-300 px-4 py-2">Nom</th>
-                    <th class="border border-gray-300 px-4 py-2">Couleur</th>
-                    <th class="border border-gray-300 px-4 py-2">Icone</th>
-                    <th class="border border-gray-300 px-4 py-2">Description</th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
+    </form>
+    <table border="1" class="border border-gray-300 m-6">
+        <thead class="border border-gray-300 m-6">
+            <th class="border border-gray-300 px-4 py-2">Nom</th>
+            <th class="border border-gray-300 px-4 py-2">Description</th>
+            <th class="border border-gray-300 px-4 py-2">Couleur</th>
+            <th class="border border-gray-300 px-4 py-2">Icone</th>
+        </thead>
+        <tbody id="table_body" class="border border-gray-300 m-6">
 
-            </tbody>
-        </table>
-    </main>
-    
+        </tbody>
+    </table>
     <script src="script.js"></script>
 </body>
 </html>

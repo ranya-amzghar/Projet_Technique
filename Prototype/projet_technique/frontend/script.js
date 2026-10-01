@@ -1,50 +1,51 @@
-let API_URL = '../backend/gestionSections/api/api.php'
-document.addEventListener('DOMContentLoaded', ()=>{
-    let btnShows = document.querySelector('#show');
+let API = ('../backend/gestionSection/api/api.php')
+document.addEventListener('DOMContentLoaded',() => {
+    let show = document.querySelector('#show');
     let form = document.querySelector('#form');
     let nom = document.querySelector('#nom');
-    let couleur = document.querySelector('#couleur');
-    let icon = document.querySelector('#icon');
     let description = document.querySelector('#description');
+    let color = document.querySelector('#color');
+    let icone = document.querySelector('#icone');
+    let add = document.querySelector('#ajouter');
+    let cancel = document.querySelector('#annuler');
     let table = document.querySelector('#table_body');
-    let btnAdd = document.querySelector('#ajouter');
-    let btnCancel = document.querySelector('#annuler');
-    function AjouterData(){
-        fetch(API_URL)
-            .then(response => response.json())
-            .then(section => {
-                table.innerHTML = '';
-                section.forEach(section=>{
-                    table.insertAdjacentHTML('beforeend', `<tr class="divide-x divide-gray-300 border-b border-gray-300"><td class="border border-gray-300 px-4 py-2">${section.nom}</td><td class="border border-gray-300 px-4 py-2">${section.couleur}</td><td class="border border-gray-300 px-4 py-2">${section.icon}</td><td class="border border-gray-300 px-4 py-2">${section.description}</td></tr>`)
-                })
-                }
-            )
-    }
-    btnShows.addEventListener('click', ()=>{
-        btnShows.hidden = true;
+    function ajouterSection(){
+        fetch(API)
+            .then(reponse => reponse.json())
+            .then(sections => {
+                table.innerHTML = "";
+                sections.forEach(section => {
+                    table.insertAdjacentHTML('beforeend', `<tr><td> ${section.nom} </td> <td> ${section.description} </td> <td> ${section.color} </td><td> ${section.icone} </td></tr>`)
+                });
+            })
+    };
+
+    show.addEventListener('click', ()=>{
+        show.hidden = true;
         form.hidden = false;
     });
-    btnCancel.addEventListener('click', ()=>{
-        btnShows.hidden = false;
+
+    cancel.addEventListener('click',()=>{
+        show.hidden = false;
         form.hidden = true;
     });
+
     form.addEventListener('submit', (event)=>{
         event.preventDefault();
-        let sections = {nom:nom.value, couleur: couleur.value, icon:icon.value, description: description.value};
-        fetch(API_URL,{
+        let section = {nom: nom.value, description: description.value, color: color.value, icone: icone.value};
+        fetch(API,{
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(sections)
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(section)
         })
-            .then(response=> response.json())
-            .then(section => {
-                console.log("Création de section:", section.id)
-                table.insertAdjacentHTML('beforeend',`<tr class="divide-x divide-gray-300 border-b border-gray-300"><td class="border border-gray-300 px-4 py-2">${section.nom}</td><td class="border border-gray-300 px-4 py-2">${section.couleur}</td><td class="border border-gray-300 px-4 py-2">${section.icon}</td><td class="border border-gray-300 px-4 py-2">${section.description}</td></tr>`);
+            .then(reponse => reponse.json())
+            .then(section=>{
+                table.insertAdjacentHTML('beforeend', `<tr><td> ${section.nom} </td> <td> ${section.description} </td> <td> ${section.color} </td><td> ${section.icone} </td></tr>`);
                 form.reset();
-                btnShows.hidden = false;
+                show.hidden = false;
                 form.hidden = true;
-                AjouterData();
-            });
+                ajouterSection();
+            })
     });
-    AjouterData();
+    ajouterSection();
 })
