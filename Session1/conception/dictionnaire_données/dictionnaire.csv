@@ -1,0 +1,18 @@
+Interface,Nom,Signification,Type,Obligatoire,Calculée
+public,titre_article,Titre de l'article,Texte,Oui,Non
+public,contenu_article,Contenu de l'article,Texte,Oui,Non
+public,description_article,Description de l'article,Texte,Oui,Non
+public,date_publication,Date de publication de l'article,Date,Oui,Non
+public,duree_lecture,Durée estimée pour lire l'article,Entier,Oui,Non
+public,image_article,Image associée à l'article,Texte,Oui,Non
+public,nom_journalist,Nom de journalist,Texte,Oui,Non
+public,prenom_journalist,Prenom de journalist,Texte,Oui,Non
+public,photo_journalist,Photo de profil de journalist,Texte,Non,Non
+public,section_nom,Nom de Catégorie de l'article,Texte,Oui,Non
+public,section_description,description de section,Texte,Oui,Non
+admin,email,Adresse email de connexion l'espace administrateur,Email,Oui,Non
+admin,mot_de_passe,Mot de passe de connexion l'espace administrateur,Texte,Oui,Non
+admin,status,Status d'article(publier/brouillon),Texte,Oui,Non
+admin,date_creation,Date de creation de l'article,Date,Oui,Non
+admin,section_colour,Coulour de section,Texte,Oui,Non
+admin,section_icon,Icon de section,Texte,Oui,Non
