@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Sections</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-4">
+    <button id="showForm" class="bg-blue-400 text-white px-4 py-2 rounded-lg">Ajouter une section</button>
+    <form id="form" hidden>
+        <div class="px-6 py-6 max-w-md mx-6">
+            <label for="nom">Nom de section</label>
+            <input type="text" name="nom" id="nom" class="m-2 border border-gray-600 rounded-lg w-full p-2">
+            <label for="icone">Icone de section</label>
+            <input type="text" name="icone" id="icone" class="m-2 border border-gray-600 rounded-lg w-full p-2">
+            <label for="couler">Couleur de section</label>
+            <input type="color" name="couleur" id="couleur" class="m-2 border border-gray-600 rounded-lg w-full p-2">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" class="m-2 border border-gray-600 rounded-lg w-full p-2">
+            <button type="submit" id="ajouter" class="bg-blue-400 text-white px-4 py-2 rounded-lg">Ajouter</button>
+            <button type="button" id="annuler" class="bg-gray-400 text-white px-4 py-2 rounded-lg">Annuler</button>
+        </div>
+        </form>
+    <table border="1" class="border border-gray-500 m-6">
+        <thead class="border border-gray-500 m-6">
+            <tr>
+                <th class="border border-gray-500 m-6 px-4 py-2">Nom</th>
+                <th class="border border-gray-500 m-6 px-4 py-2">Icone</th>
+                <th class="border border-gray-500 m-6 px-4 py-2">Couleur</th>
+                <th class="border border-gray-500 m-6 px-4 py-2">Description</th>
+            </tr>
+        </thead>
+        <tbody id="table_body" class="border border-gray-500 m-6 px-4 py-2">
+
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
