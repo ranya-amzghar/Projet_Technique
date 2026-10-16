@@ -26,18 +26,6 @@ Class Section{
     public function getDescription(): string{
         return $this->description;
     }
-    public function setNom(): void{
-        $this->nom = $nom;
-    }
-    public function setIcone(): void{
-        $this->icone = $icone;
-    }
-    public function setCouleur(): void{
-        $this->couleur = $couleur;
-    }
-    public function setDescription(): void{
-        $this->description = $description;
-    }
 }
 Class SectionManger{
     private $file;
