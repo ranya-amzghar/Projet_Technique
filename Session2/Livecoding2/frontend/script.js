@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             .then(section => {
                 table.innerHTML = "";
                 section.forEach(sec => {
-                    table.insertAdjacentHTML('beforeend',`<tr><td>${sec.nom}</td><td>${sec.description}</td><td>${sec.couleur}</td><td>${sec.icone}</td></tr>`)
+                    table.insertAdjacentHTML('beforeend',`<tr><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.nom}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.description}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.couleur}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.icone}</td></tr>`)
                 });
             })
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
             .then(response=>response.json())
             .then(section=>{
-                table.insertAdjacentHTML('beforeend',`<tr><td>${section.nom}</td><td>${section.description}</td><td>${section.couleur}</td><td>${section.icone}</td></tr>`);
+                table.insertAdjacentHTML('beforeend',`<tr><td class="p-4 text-sm font-semibold text-black-500 uppercase">${section.nom}</td><td class="p-4 text-sm font-semibold text-black-500 uppercase">${section.description}</td><td class="p-4 text-sm font-semibold text-black-500 uppercase">${section.couleur}</td><td class="p-4 text-sm font-semibold text-black-500 uppercase">${section.icone}</td></tr>`);
                 form.reset();
                 form_Section.hidden = true;
                 btnShow_form = false;
