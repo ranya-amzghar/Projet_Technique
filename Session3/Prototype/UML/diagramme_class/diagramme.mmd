@@ -1,0 +1,29 @@
+classDiagram
+    class Section{
+        -int id
+        -string nom
+        -string couleur
+        -string icone
+        -string description
+    }
+    class Journaliste{
+        -int id
+        -string email
+        -string nom
+        -string prenom
+        -string photo
+        -string mot_de_passe
+    }
+    class Article{
+        -int id
+        -string titre
+        -text contenu
+        -string description
+        -date date_publication
+        -date date_creation
+        -time duree_lecture
+        -text image
+        -string statut
+    }
+    Journaliste "1" -- "0..*" Article : rédige
+    Section "1" -- "0..*" Article : contient
