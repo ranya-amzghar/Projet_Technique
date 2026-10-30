@@ -1,5 +1,5 @@
 <?php
-require 'section.php';
+require 'Section.php';
 
 class SectionManager{
     private $file;
