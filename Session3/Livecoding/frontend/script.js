@@ -1,4 +1,4 @@
-let API = 'http://localhost:8000/backend/api/api.php';
+const API = '../backend/api/api.php';
 document.addEventListener('DOMContentLoaded',()=>{
     let btnShow_form = document.querySelector('#btn-show-form');
     let form_Section = document.querySelector('#section-form');
@@ -39,16 +39,38 @@ document.addEventListener('DOMContentLoaded',()=>{
         }, 3000)
     }
 
+    function renderSections(sections){
+        table.replaceChildren();
+        sections.forEach(section => {
+            let row = document.createElement('tr');
+            [section.nom, section.description, section.couleur, section.icone].forEach(value => {
+                let cell = document.createElement('td');
+                cell.className = 'p-4 text-sm font-semibold text-gray-500 uppercase';
+                cell.textContent = value ?? '';
+                row.appendChild(cell);
+            });
+            table.appendChild(row);
+        });
+    }
+
     function ajouterSection(){
         fetch(API)
-            .then(reponse => reponse.json())
-            .then(section => {
-                table.innerHTML = "";
-                section.forEach(sec => {
-                    table.insertAdjacentHTML('beforeend',`<tr><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.nom}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.description}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.couleur}</td><td class="p-4 text-sm font-semibold text-gray-500 uppercase">${sec.icone}</td></tr>`)
-                });
+            .then(response => {
+                if(!response.ok){
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                return response.json();
             })
-
+            .then(sections => {
+                if(!Array.isArray(sections)){
+                    throw new Error('Réponse invalide du serveur');
+                }
+                renderSections(sections);
+            })
+            .catch(error => {
+                ShowToast("Impossible de charger les sections","error");
+                console.error(error);
+            });
     }
 
     btnShow_form.addEventListener('click',()=>{
@@ -68,7 +90,12 @@ document.addEventListener('DOMContentLoaded',()=>{
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(section)
         })
-            .then(response=>response.json())
+            .then(response=>{
+                if(!response.ok){
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                return response.json();
+            })
             .then(section=>{
                 ShowToast("Section enregistrée avec success","success");
                 form.reset();

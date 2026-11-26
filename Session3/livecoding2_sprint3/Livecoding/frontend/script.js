@@ -59,29 +59,39 @@ document.addEventListener('DOMContentLoaded',()=>{
         form_Section.classList.add('hidden');
     });
 
-    form.addEventListener('submit',(event)=>{
-        event.preventDefault();
-        setLoading(true);
-        let section = {nom: nom.value,description:description.value,couleur:couleur.value,icone:icone.value}
-        fetch(API,{
-            method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(section)
-        })
-            .then(response=>response.json())
-            .then(section=>{
-                ShowToast("Section enregistrée avec success","success");
-                form.reset();
-                form_Section.classList.add('hidden');
-                ajouterSection();
-            })
-            .catch(error=>{
-                ShowToast("Erreur reseau: Impossible de contacter le serveur","error");
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+    
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    setLoading(true);
+
+    let section = {nom: nom.value, description: description.value, couleur: couleur.value, icone: icone.value};
+    fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(section)
+    })
+    .then(async response => {
+        let result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.message);
+        }
+        return result;
+    })
+    .then(result => {
+        ShowToast(result.message || "Section enregistrée avec succès", "success");
+        form.reset();
+        form_Section.classList.add('hidden');
+        ajouterSection();
+    })
+    .catch(error => {
+        ShowToast(error.message, "error");
+        console.log(error);
+    })
+    .finally(() => {
+        setLoading(false);
     });
+});
+
     ajouterSection();
 })
